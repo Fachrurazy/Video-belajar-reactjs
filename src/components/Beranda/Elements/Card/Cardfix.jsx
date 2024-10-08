@@ -1,3 +1,5 @@
+import logorating from "../../../../assets/logo-rating.svg"
+
 const cardfix = (props) => {
     const { title, description, name, role, company, avatar, image, rating, price } = props
     return(
@@ -33,7 +35,7 @@ const cardfix = (props) => {
         </div>
         <div className="relative flex mt-3">
             <img 
-            src="/src/assets/logo-rating.svg" 
+            src={logorating} 
             alt="Rating" />
             <div className="flex">
                 <p className="ml-2 text-base underline underline-offset-2 text-slate-600">

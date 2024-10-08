@@ -1,5 +1,22 @@
 import { create } from "zustand"
-import image from "../../../assets/card1.png"
+import card1 from "../../../assets/card1.png"
+import avatar1 from "../../../assets/Avatar1.png"
+import card2 from "../../../assets/card2.png"
+import avatar2 from "../../../assets/Avatar2.png"
+import card3 from "../../../assets/card3.png"
+import avatar3 from "../../../assets/Avatar3.png"
+import card4 from "../../../assets/card4.png"
+import avatar4 from "../../../assets/Avatar4.png"
+import card5 from "../../../assets/card5.png"
+import avatar5 from "../../../assets/Avatar5.png"
+import card6 from "../../../assets/card6.png"
+import avatar6 from "../../../assets/Avatar6.png"
+import card7 from "../../../assets/card7.png"
+import avatar7 from "../../../assets/Avatar7.png"
+import card8 from "../../../assets/card8.png"
+import avatar8 from "../../../assets/Avatar8.png"
+import card9 from "../../../assets/card9.png"
+import avatar9 from "../../../assets/Avatar1.png"
 
 const useProducts = create((set) => ({
     products:
@@ -9,9 +26,9 @@ const useProducts = create((set) => ({
             title: "Big 4 Auditor Financial Analyst",
             description: "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
             price: 300,
-            image: image,
+            image: card1,
             rating: 3.5,
-            avatar: "/src/assets/Avatar1.png",
+            avatar: avatar1,
             name: "Jenna Ortega",
             role: "Senior Accountant",
             company: "Gojek",
@@ -21,9 +38,9 @@ const useProducts = create((set) => ({
             title: "Big 4 Auditor Financial Analyst",
             description: "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
             price: 300,
-            image: "/src/assets/card2.png",
+            image: card2,
             rating: 3.5,
-            avatar: "/src/assets/Avatar2.png",
+            avatar: avatar2,
             name: "Jenna Ortega",
             role: "Senior Accountant",
             company: "Gojek",
@@ -33,9 +50,9 @@ const useProducts = create((set) => ({
             title: "Big 4 Auditor Financial Analyst",
             description: "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
             price: 300,
-            image: "/src/assets/card3.png",
+            image: card3,
             rating: 3.5,
-            avatar: "/src/assets/Avatar3.png",
+            avatar: avatar3,
             name: "Jenna Ortega",
             role: "Senior Accountant",
             company: "Gojek",
@@ -45,9 +62,9 @@ const useProducts = create((set) => ({
             title: "Big 4 Auditor Financial Analyst",
             description: "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
             price: 300,
-            image: "/src/assets/card4.png",
+            image: card4,
             rating: 3.5,
-            avatar: "/src/assets/Avatar4.png",
+            avatar: avatar4,
             name: "Jenna Ortega",
             role: "Senior Accountant",
             company: "Gojek",
@@ -57,9 +74,9 @@ const useProducts = create((set) => ({
             title: "Big 4 Auditor Financial Analyst",
             description: "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
             price: 300,
-            image: "/src/assets/card5.png",
+            image: card5,
             rating: 3.5,
-            avatar: "/src/assets/Avatar5.png",
+            avatar: avatar5,
             name: "Jenna Ortega",
             role: "Senior Accountant",
             company: "Gojek",
@@ -69,9 +86,9 @@ const useProducts = create((set) => ({
             title: "Big 4 Auditor Financial Analyst",
             description: "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
             price: 300,
-            image: "/src/assets/card6.png",
+            image: card6,
             rating: 3.5,
-            avatar: "/src/assets/Avatar6.png",
+            avatar: avatar6,
             name: "Jenna Ortega",
             role: "Senior Accountant",
             company: "Gojek",
@@ -81,9 +98,9 @@ const useProducts = create((set) => ({
             title: "Big 4 Auditor Financial Analyst",
             description: "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
             price: 300,
-            image: "/src/assets/card7.png",
+            image: card7,
             rating: 3.5,
-            avatar: "/src/assets/Avatar7.png",
+            avatar: avatar7,
             name: "Jenna Ortega",
             role: "Senior Accountant",
             company: "Gojek",
@@ -93,9 +110,9 @@ const useProducts = create((set) => ({
             title: "Big 4 Auditor Financial Analyst",
             description: "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
             price: 300,
-            image: "/src/assets/card8.png",
+            image: card8,
             rating: 3.5,
-            avatar: "/src/assets/Avatar8.png",
+            avatar: avatar8,
             name: "Jenna Ortega",
             role: "Senior Accountant",
             company: "Gojek",
@@ -105,9 +122,9 @@ const useProducts = create((set) => ({
             title: "Big 4 Auditor Financial Analyst",
             description: "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
             price: 300,
-            image: "/src/assets/card9.png",
+            image: card9,
             rating: 3.5,
-            avatar: "/src/assets/Avatar1.png",
+            avatar: avatar9,
             name: "Jenna Ortega",
             role: "Senior Accountant",
             company: "Gojek",

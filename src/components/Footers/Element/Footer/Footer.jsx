@@ -4,6 +4,10 @@ import Labelh2 from "../Label/Labelh2"
 import Label from "../Label/Label"
 import List from "../List/List"
 import Linkto from "../Link/Linkto"
+import logolinkedin from "../../../../assets/logo-linkedin.png"
+import logodfacebook from "../../../../assets/logo-facebook.png"
+import logoinstagram from "../../../../assets/logo-instagram.png"
+import logotwitter from "../../../../assets/logo-twitter.png"
 
 const footer = (props) => {
     const { children } = props
@@ -77,22 +81,22 @@ const Footer = () => {
             <div className="flex gap-3 mt-4 sm:justify-center sm:mt-0">
                 <Linkto 
                 to="/beranda" 
-                image="/src/assets/logo-linkedin.png"
+                image={logolinkedin}
                 alt="logo-linkedin"
                 />
                 <Linkto 
                 to="/beranda" 
-                image="/src/assets/logo-facebook.png"
+                image={logodfacebook}
                 alt="logo-facebook"
                 />
                 <Linkto 
                 to="/beranda" 
-                image="/src/assets/logo-instagram.png"
+                image={logoinstagram}
                 alt="logo-instagram"
                 />
                 <Linkto 
                 to="/beranda" 
-                image="/src/assets/logo-twitter.png"
+                image={logotwitter}
                 alt="logo-twitter"
                 />
             </div>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import avatarheader from "../../../../assets/Avatar-Header.png"
 
 const burger = () => {
     return(
@@ -17,7 +18,7 @@ const burger = () => {
                 </li>
                 <li className="py-2 lg:py-0 ">
                     <Link className="" href="#">
-                        <img src="/src/assets/Avatar-Header.png" alt="Avatar-Header-Girl" />
+                        <img src={avatarheader} alt="Avatar-Header-Girl" />
                     </Link>
                 </li>
             </ul>
