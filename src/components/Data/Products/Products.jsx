@@ -1,4 +1,5 @@
 import { create } from "zustand"
+import image from "../../../assets/card1.png"
 
 const useProducts = create((set) => ({
     products:
@@ -8,7 +9,7 @@ const useProducts = create((set) => ({
             title: "Big 4 Auditor Financial Analyst",
             description: "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
             price: 300,
-            image: "/src/assets/card1.png",
+            image: image,
             rating: 3.5,
             avatar: "/src/assets/Avatar1.png",
             name: "Jenna Ortega",
