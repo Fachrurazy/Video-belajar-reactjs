@@ -1,5 +1,6 @@
 import logorating from "../../../../assets/logo-rating.svg"
 
+
 const cardfix = (props) => {
     const { title, description, name, role, company, avatar, image, rating, price } = props
     return(

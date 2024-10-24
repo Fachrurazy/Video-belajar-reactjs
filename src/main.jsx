@@ -1,38 +1,55 @@
-import { StrictMode } from 'react'
+import { lazy } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
-import Loginpage from './pages/Login'
-import Errorpage from './pages/404Page'
-import Registerpage from './pages/Register'
-import Berandapage from './pages/Beranda'
+import Suspensefallback from './components/Suspensefallback/Suspensefallback'
+import Skeletonlogin from './components/Skeleton/Login/login'
+import Skeletonregister from './components/Skeleton/Register/register'
+import Skeletonberanda from './components/Skeleton/Beranda/index'
+
+export const Loginpage = lazy(() => import('./pages/Login'))
+const Errorpage = lazy(() => import('./pages/404Page'))
+const Registerpage = lazy(() => import('./pages/Register'))
+const Berandapage = lazy(() => import('./pages/Beranda'))
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Loginpage />,
+    element: 
+    <Suspensefallback fallback={<Skeletonlogin/>}>
+    <Loginpage />
+  </Suspensefallback>,
     errorElement: <Errorpage />
   },
   {
     path: '/login',
-    element: <Loginpage />,
+    element:
+      <Suspensefallback fallback={<Skeletonlogin/>}>
+        <Loginpage />
+      </Suspensefallback>,
     errorElement: <Errorpage />
   },
   {
     path: '/register',
-    element: <Registerpage />,
+    element: 
+    <Suspensefallback fallback={<Skeletonregister/>}>
+      <Registerpage />
+    </Suspensefallback>,
     errorElement: <Errorpage />
   },
   {
     path: '/beranda',
-    element: <Berandapage />,
+    element: 
+    <Suspensefallback fallback={<Skeletonberanda/>}>
+      <Berandapage />
+    </Suspensefallback>,
     errorElement: <Errorpage />
   },
 
 ])
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>  
+  <Suspensefallback>  
     <RouterProvider router={router} />
-  </StrictMode>,
+  </Suspensefallback>,
 )
