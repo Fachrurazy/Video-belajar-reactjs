@@ -3,7 +3,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 const cardskeleton = () => {
     return (
-        <SkeletonTheme>
+        <SkeletonTheme color="#313131" highlightColor="#525252">
             <div className="p-5 bg-white border rounded-lg">
         <div className="container">
             <div className="max-sm:flex">
