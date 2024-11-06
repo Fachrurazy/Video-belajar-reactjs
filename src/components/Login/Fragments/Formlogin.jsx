@@ -6,25 +6,19 @@ import Button from "../Elements/Button/Button"
 import Buttongoogle from "../Elements/Button/Buttongoogle"
 import Labelforgetpass from "../Elements/Label/Labelforgetpass"
 import Divider from "../Elements/Divider/Divider"
-// import Modalerrorhandler from "../../Modal/Errorhandle/Modal"
 
 const Formlogin = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    // const [errorText, setErrorText] = useState('')
     
     const Handlelogin = (event) => {
     event.preventDefault()
     const existingUserData = JSON.parse(localStorage.getItem('userData')) 
     if (localStorage.length === 0) {
     alert('Anda belum mempunyai akun')
-    // setErrorText("Anda belum mempunyai akun")
-    // document.getElementById('my_modal_2').showModal()
     }
     else if (existingUserData.email !== email && existingUserData.password !== password) {
     alert('Email dan Password anda tidak sesuai')
-    // setErrorText("Email anda tidak terdaftar")
-    // document.getElementById('my_modal_2').showModal()
     }
     else if (existingUserData.email === email && existingUserData.password !== password) {
         alert('Email dan Password anda tidak sesuai')
