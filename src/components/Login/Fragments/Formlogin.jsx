@@ -6,14 +6,21 @@ import Button from "../Elements/Button/Button"
 import Buttongoogle from "../Elements/Button/Buttongoogle"
 import Labelforgetpass from "../Elements/Label/Labelforgetpass"
 import Divider from "../Elements/Divider/Divider"
+import { useEffect } from "react"
+import {getUsers} from "../../../services/users.service"
+
 
 const Formlogin = () => {
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [password, setPassword] = useState('') 
+    const existingUserData = JSON.parse(localStorage.getItem('userData')) 
+    
+    useEffect(() => {
+        getUsers()
+    }, [])
     
     const Handlelogin = (event) => {
     event.preventDefault()
-    const existingUserData = JSON.parse(localStorage.getItem('userData')) 
     if (localStorage.length === 0) {
     alert('Anda belum mempunyai akun')
     }
@@ -30,8 +37,12 @@ const Formlogin = () => {
     setEmail('')
     setPassword('')
     alert('Login Berhasil')
-    window.location.href = '/beranda' 
+    window.location.href = '/beranda'
     }
+
+    
+
+    
 }
 
     return (
