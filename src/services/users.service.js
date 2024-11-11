@@ -1,11 +1,21 @@
 import axios from "axios"
 
-export const getUsers = () => {
-    axios.get('https://672b2a87976a834dd025e2b8.mockapi.io/api/v1/users')
+export const getUsers = (callback) => {
+    axios.get(import.meta.env.VITE_API_URL + '/users')
     .then((res) => {
-        console.log(res.data)
+        callback(res.data)
     })
     .catch((err) => {
-        console.log(err)
+        console.log(err.message)
     })
 }
+export const postUsers = (data) => {
+    axios.post(import.meta.env.VITE_API_URL + '/users', data)
+    .then((res) => {
+        console.log(res)
+    })
+    .catch((err) => {
+        console.log(err.message)
+    })
+}
+

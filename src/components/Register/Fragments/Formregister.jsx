@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import { postUsers } from "../../../services/users.service"
 import Button from "../Elements/Button/Button"
 import Inputform from "../Elements/Input/Index"
 import Inputpass from "../Elements/Input/Inputpass"
@@ -9,39 +10,41 @@ import Divider from "../Elements/Divider/Divider"
 import Buttongoogle from "../Elements/Button/Buttongoogle"
 import Dropdowngender from "../Elements/Dropdown/Dropdowngender"
 const Formregister = () => {
-  const [fullname, setFullname] = useState('')
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [gender, setGender] = useState('')
-  const [phone, setPhone] = useState('')
+  const [phonenumber, setPhonenumber] = useState('')
   const [password, setPassword] = useState('')
   const [confirmpassword, setConfirmpassword] = useState('')
   const userData = {
-    fullname,
+    name,
     email,
     gender,
-    phone,
-    password,
-    confirmpassword
+    phonenumber,
+    password
   }
+  
    const HandleRegister = (event) => {
     event.preventDefault()
-    const existingUserData = JSON.parse(localStorage.getItem('userData'))
-    if (confirmpassword !== password) {
-      alert('Pastikan Password dan Konfirmasi Password anda sudah sama')
-    } 
-    else if (existingUserData && existingUserData.email === email) {
-      alert('Email sudah terdaftar, silahkan gunakan email lain')
-    }
-    else {
-    localStorage.setItem('userData', JSON.stringify(userData))
-    alert('Registrasi Berhasil')
-    setFullname('')
-    setEmail('')
-    setGender('')
-    setPhone('')
-    setPassword('')
-    setConfirmpassword('')
-    }
+    
+    postUsers(userData)
+    // const existingUserData = JSON.parse(localStorage.getItem('userData'))
+    // if (confirmpassword !== password) {
+    //   alert('Pastikan Password dan Konfirmasi Password anda sudah sama')
+    // } 
+    // else if (existingUserData && existingUserData.email === email) {
+    //   alert('Email sudah terdaftar, silahkan gunakan email lain')
+    // }
+    // else {
+    // localStorage.setItem('userData', JSON.stringify(userData))
+    // alert('Registrasi Berhasil')
+    // setFullname('')
+    // setEmail('')
+    // setGender('')
+    // setPhone('')
+    // setPassword('')
+    // setConfirmpassword('')
+    // }
        
 }
 
@@ -52,8 +55,8 @@ const Formregister = () => {
       label="Nama Lengkap" 
       type="text" 
       name="nama lengkap"
-      value={fullname}
-      onChange={(e) => setFullname(e.target.value)} 
+      value={name}
+      onChange={(e) => setName(e.target.value)} 
       />
       <Inputform 
       label="Email" 
@@ -72,8 +75,8 @@ const Formregister = () => {
       label="No Hp." 
       type="number" 
       name="no hp"
-      value={phone}
-      onChange={(e) => setPhone(e.target.value)} 
+      value={phonenumber}
+      onChange={(e) => setPhonenumber(e.target.value)} 
       />
       <Inputpass 
       label="Kata Sandi" 

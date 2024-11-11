@@ -12,33 +12,49 @@ import {getUsers} from "../../../services/users.service"
 
 const Formlogin = () => {
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('') 
-    const existingUserData = JSON.parse(localStorage.getItem('userData')) 
+    const [password, setPassword] = useState('')
+    const [users, setUsers] = useState([]) 
+    // const existingUserData = JSON.parse(localStorage.getItem('userData')) 
     
     useEffect(() => {
-        getUsers()
+        getUsers((data) => {
+            setUsers(data)
+        })
     }, [])
+
+    const user = users.find((user) => user.email === email && user.password === password)
+
     
     const Handlelogin = (event) => {
     event.preventDefault()
-    if (localStorage.length === 0) {
-    alert('Anda belum mempunyai akun')
-    }
-    else if (existingUserData.email !== email && existingUserData.password !== password) {
-    alert('Email dan Password anda tidak sesuai')
-    }
-    else if (existingUserData.email === email && existingUserData.password !== password) {
+    if (!user) {
         alert('Email dan Password anda tidak sesuai')
     }
-    else if (existingUserData.email !== email && existingUserData.password === password) {
-        alert('Email dan Password anda tidak sesuai')
+    else if (user) {
+        setEmail('')
+        setPassword('')
+        localStorage.setItem('userData', JSON.stringify(user))
+        alert('Login Berhasil')
+        window.location.href = '/beranda'
     }
-    else if (existingUserData.email === email && existingUserData.password === password) {
-    setEmail('')
-    setPassword('')
-    alert('Login Berhasil')
-    window.location.href = '/beranda'
-    }
+    // if (localStorage.length === 0) {
+    // alert('Anda belum mempunyai akun')
+    // }
+    // else if (existingUserData.email !== email && existingUserData.password !== password) {
+    // alert('Email dan Password anda tidak sesuai')
+    // }
+    // else if (existingUserData.email === email && existingUserData.password !== password) {
+    //     alert('Email dan Password anda tidak sesuai')
+    // }
+    // else if (existingUserData.email !== email && existingUserData.password === password) {
+    //     alert('Email dan Password anda tidak sesuai')
+    // }
+    // else if (existingUserData.email === email && existingUserData.password === password) {
+    // setEmail('')
+    // setPassword('')
+    // alert('Login Berhasil')
+    // window.location.href = '/beranda'
+    // }
 
     
 
