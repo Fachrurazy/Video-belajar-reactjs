@@ -11,6 +11,7 @@ export const Loginpage = lazy(() => import('./pages/Login'))
 const Errorpage = lazy(() => import('./pages/404Page'))
 const Registerpage = lazy(() => import('./pages/Register'))
 const Berandapage = lazy(() => import('./pages/Beranda'))
+const Adminpage = lazy(() => import('./pages/Admin'))
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,14 @@ const router = createBrowserRouter([
     element: 
     <Suspensefallback fallback={<Skeletonberanda/>}>
       <Berandapage />
+    </Suspensefallback>,
+    errorElement: <Errorpage />
+  },
+  {
+    path: '/admin',
+    element: 
+    <Suspensefallback fallback={<Skeletonregister/>}>
+      <Adminpage />
     </Suspensefallback>,
     errorElement: <Errorpage />
   },

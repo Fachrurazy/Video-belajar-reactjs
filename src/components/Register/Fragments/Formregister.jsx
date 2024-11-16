@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import { postUsers } from "../../../services/users.service"
+import { postUsers, getUsers } from "../../../services/users.service"
 import Button from "../Elements/Button/Button"
 import Inputform from "../Elements/Input/Index"
 import Inputpass from "../Elements/Input/Inputpass"
@@ -16,6 +16,7 @@ const Formregister = () => {
   const [phonenumber, setPhonenumber] = useState('')
   const [password, setPassword] = useState('')
   const [confirmpassword, setConfirmpassword] = useState('')
+  const [users, setUsers] = useState([])
   const userData = {
     name,
     email,
@@ -23,11 +24,33 @@ const Formregister = () => {
     phonenumber,
     password
   }
+
+  useEffect(() => {
+    getUsers((data) => {
+        setUsers(data)
+    })
+}, [])
+
+  const user = users.find((user) => user.email === email)
   
    const HandleRegister = (event) => {
     event.preventDefault()
-    
-    postUsers(userData)
+    if (confirmpassword !== password) {
+        alert('Pastikan Password dan Konfirmasi Password anda sudah sama')
+      }
+    else if (user) {
+        alert('Email sudah terdaftar, silahkan gunakan email lain')
+      }
+    else {
+        postUsers(userData)
+        alert('Registrasi Berhasil')
+        setName('')
+        setEmail('')
+        setGender('')
+        setPhonenumber('')
+        setPassword('')
+        setConfirmpassword('')
+      }
     // const existingUserData = JSON.parse(localStorage.getItem('userData'))
     // if (confirmpassword !== password) {
     //   alert('Pastikan Password dan Konfirmasi Password anda sudah sama')
@@ -45,6 +68,7 @@ const Formregister = () => {
     // setPassword('')
     // setConfirmpassword('')
     // }
+    
        
 }
 
