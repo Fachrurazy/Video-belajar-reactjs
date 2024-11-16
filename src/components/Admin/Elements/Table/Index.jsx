@@ -2,43 +2,19 @@ import { Button, Table } from 'antd'
 import { useState, useEffect } from "react"
 import userUserStore from "../../../Data/Users/UsersStore"
 import Modal from '../Form/Index'
-// import { getUsers } from "../../../../services/users.service"
-// import Labelinput from '../Label/Index'
 
 const Index = () => {
-    // const [users, setUsers] = useState([])
+
     const [isopen, setIsOpen] = useState(false)
     const [iduser, setIdUser] = useState('')
     const getListusers = userUserStore()
     
-    // const initForm = {
-    //     name: '',
-    //     email: '',
-    //     phone: '',
-    //     gender: ''
-    // // }
-    // const [formuser, setFormuser] = useState([])
-    
-    
-    // const listUser = userUserStore((state) => state.listUser)
-    // console.log(iduser)
     
     useEffect(() => {
         getListusers.getApiUsers()
     }, [])
     
-    // const option = [
-    //     { 
-    //         value: 'laki-laki', 
-    //         label: 'Laki-laki' 
-    //     },
-    //     { 
-    //         value: 'perempuan', 
-    //         label: 'Perempuan' 
-    //     },
-    // ]
-    // const getIndex = users.findIndex((e) => e.id === iduser)
-    
+    console.log(iduser)
 
     const datauser = getListusers.listusers.map((user) => ({
         key: user.id,
@@ -97,7 +73,7 @@ const Index = () => {
         <Modal 
         open={isopen}
         iduser={iduser}
-        onOk={() => setIsOpen(false)} 
+        onOk={() => getListusers.setApiUsers(iduser)} 
         onCancel={() => 
         {setIsOpen(false)
         setIdUser('')}}></Modal>

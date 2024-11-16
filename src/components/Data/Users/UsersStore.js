@@ -11,21 +11,13 @@ const userStore = create ((set) => ({
       console.error("Error in data fetch:", err)
     }
   },
-  setApiUsers: async () => {
+  setApiUsers: async (payload) => {
     try { 
-      const res = await axios.put(import.meta.env.VITE_API_URL + '/users')
+      const res = await axios.put(import.meta.env.VITE_API_URL + `/users/${payload.id}`)
       set({ listusers: res.data }) 
     } catch (err) {
       console.error("Error in post data:", err)
   }
-  },
-  getIDusers: async (id) => {
-    try {
-      const res = await axios.get(import.meta.env.VITE_API_URL + `/users/${id}`)
-      set({ listusers: res.data })
-    } catch (err) {
-      console.error("Error in data fetch ID:", err)
-    }
   }
 }))
 
