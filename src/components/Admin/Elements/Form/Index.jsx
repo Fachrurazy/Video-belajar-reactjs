@@ -1,11 +1,11 @@
-import {Modal, Input, Select} from 'antd'
+import {Modal, Input, Select, message} from 'antd'
 import { useEffect, useState } from "react"
 import Labelinput from '../Label/Index'
 import userUserStore from "../../../Data/Users/UsersStore"
 
  const Index = (props) => {
     
-    const { open, onOk, onCancel, iduser } = props
+    const { open, onOk, onCancel, iduser, title } = props
     const getListusers = userUserStore()
     const [datausers, setDataUsers] = useState({
         name: '',
@@ -27,7 +27,7 @@ import userUserStore from "../../../Data/Users/UsersStore"
             }
           }
         }, [open, iduser, getListusers.listusers])
-    console.log(datausers)
+    // console.log(datausers)
 
     
 
@@ -41,10 +41,16 @@ import userUserStore from "../../../Data/Users/UsersStore"
             label: 'Perempuan' 
         },
     ]
+
+    const handleOk = async () => {
+      getListusers.setApiUsers({ id: iduser, ...datausers })
+    onOk()
+    message.success('Success Edit User')
+  }
      return (
-        <Modal title="Edit User" 
+        <Modal title={title} 
         open={open} 
-        onOk={onOk} 
+        onOk={handleOk} 
         onCancel={onCancel} 
         iduser={iduser} >
         <Labelinput>Full Name</Labelinput>
