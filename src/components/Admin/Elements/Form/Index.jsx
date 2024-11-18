@@ -1,7 +1,7 @@
 import {Modal, Input, Select, message} from 'antd'
 import { useEffect, useState } from "react"
-import Labelinput from '../Label/Index'
 import userUserStore from "../../../Data/Users/UsersStore"
+import { Form } from 'antd'
 
  const Index = (props) => {
     
@@ -48,38 +48,62 @@ import userUserStore from "../../../Data/Users/UsersStore"
     message.success('Success Edit User')
   }
      return (
-        <Modal title={title} 
+        <Modal 
+        title={title} 
         open={open} 
         onOk={handleOk} 
         onCancel={onCancel} 
         iduser={iduser} >
-        <Labelinput>Full Name</Labelinput>
-        <Input required 
-        style={{marginBottom: '10px', marginTop: '10px'}} 
+        <Form
+        labelCol={{
+          span: 6,
+        }}
+        wrapperCol={{
+          span: 24,
+        }}
+        initialValues={{
+          remember: true,
+        }}
+        style={{
+          marginTop: 20
+        }}
+        >
+        <Form.Item
+        label="Full Name" 
+        rules={[{ required: true, message: 'Please input your Full Name!' }]}>
+        <Input 
         placeholder='Full Name'
         value={datausers.name}
         onChange={(e) => setDataUsers({...datausers, name: e.target.value })}/>
-        <Labelinput>Email</Labelinput>
-        <Input required 
-        type='email' 
-        style={{marginBottom: '10px', marginTop: '10px'}} 
+        </Form.Item>
+        <Form.Item
+        label="Email" 
+        rules={[{ required: true, message: 'Please input your Email!' }]}>
+        <Input 
+        type='email'
         placeholder='Email'
         value={datausers.email}
         onChange={(e) => setDataUsers({...datausers, email: e.target.value })}/>
-        <Labelinput>Phone Number</Labelinput>
+        </Form.Item>
+        <Form.Item
+        label="Phone Number" 
+        rules={[{ required: true, message: 'Please input your Phone Number!' }]}>
         <Input required 
-        type='text'
-        style={{marginBottom: '10px', marginTop: '10px'}} 
+        type='text' 
         placeholder='Phone Number'
         value={datausers.phonenumber}
         onChange={(e) => setDataUsers({...datausers, phonenumber: e.target.value })}/>
-        <Labelinput>Gender</Labelinput>
+        </Form.Item>
+        <Form.Item
+        label="Gender" 
+        rules={[{ required: true, message: 'Please input your Gender!' }]}>
         <Select 
-        options={option} 
-        style={{marginBottom: '10px', marginTop: '10px', width: '100%'}} 
+        options={option}
         placeholder='Pilih Gender'
         value={datausers.gender}
         onChange={(value) => setDataUsers({ ...datausers, gender: value })}/>
+        </Form.Item>
+        </Form>
         </Modal>
      )
  }

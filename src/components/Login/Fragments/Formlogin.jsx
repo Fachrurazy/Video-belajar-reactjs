@@ -7,6 +7,7 @@ import Button from "../Elements/Button/Button"
 import Buttongoogle from "../Elements/Button/Buttongoogle"
 import Labelforgetpass from "../Elements/Label/Labelforgetpass"
 import Divider from "../Elements/Divider/Divider"
+import { message } from "antd"
 
 
 const Formlogin = () => {
@@ -27,13 +28,15 @@ const Formlogin = () => {
     const Handlelogin = (event) => {
     event.preventDefault()
     if (!user) {
-        alert('Email dan Password anda tidak sesuai')
+        // alert('Email dan Password anda tidak sesuai')
+        message.error('Email dan Password anda tidak sesuai')
     }
     else if (user) {
         setEmail('')
         setPassword('')
         localStorage.setItem('userData', JSON.stringify(user))
-        alert('Login Berhasil')
+        // alert('Login Berhasil')
+        message.success('Login Berhasil')
         window.location.href = '/beranda'
     }
     // if (localStorage.length === 0) {

@@ -33,6 +33,16 @@ const userStore = create ((set) => ({
     } catch (err) {
       console.error("Error in deleting data:", err)
     }
+  },
+  createApiUsers: async (payload) => {
+    try{
+      const res = await axios.post(import.meta.env.VITE_API_URL + '/users', payload)
+      set((state) => ({
+        listusers: [...state.listusers, res.data]
+    }))
+    } catch (err) {
+      console.error("Error in creating data:", err)
+    }
   }
 }))
 

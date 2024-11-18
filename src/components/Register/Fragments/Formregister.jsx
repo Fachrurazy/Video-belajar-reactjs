@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import { postUsers, getUsers } from "../../../services/users.service"
+import userUserStore from "../../Data/Users/UsersStore"
 import Button from "../Elements/Button/Button"
 import Inputform from "../Elements/Input/Index"
 import Inputpass from "../Elements/Input/Inputpass"
@@ -9,6 +9,7 @@ import Labelforgetpass from "../Elements/Label/Labelforgetpass"
 import Divider from "../Elements/Divider/Divider"
 import Buttongoogle from "../Elements/Button/Buttongoogle"
 import Dropdowngender from "../Elements/Dropdown/Dropdowngender"
+import { message } from "antd"
 const Formregister = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -16,7 +17,9 @@ const Formregister = () => {
   const [phonenumber, setPhonenumber] = useState('')
   const [password, setPassword] = useState('')
   const [confirmpassword, setConfirmpassword] = useState('')
-  const [users, setUsers] = useState([])
+  const allUsers = userUserStore((state) => state.listusers)
+  const getApi = userUserStore((state) => state.getApiUsers)
+  const postAPI = userUserStore((state) => state.createApiUsers)
   const userData = {
     name,
     email,
@@ -26,24 +29,25 @@ const Formregister = () => {
   }
 
   useEffect(() => {
-    getUsers((data) => {
-        setUsers(data)
-    })
-}, [])
+   if(allUsers.length === 0) {
+    getApi()
+   }
+}, [allUsers, getApi])
+console.log(userData)
 
-  const user = users.find((user) => user.email === email)
-  
-   const HandleRegister = (event) => {
+const handleUsers = allUsers.find((user) => user.email === email)
+
+const HandleRegister = (event) => {
     event.preventDefault()
     if (confirmpassword !== password) {
-        alert('Pastikan Password dan Konfirmasi Password anda sudah sama')
+        message.error('Pastikan Password dan Konfirmasi Password anda sudah sama')
       }
-    else if (user) {
-        alert('Email sudah terdaftar, silahkan gunakan email lain')
+    else if (handleUsers) {
+        message.error('Email sudah terdaftar, silahkan gunakan email lain')
       }
     else {
-        postUsers(userData)
-        alert('Registrasi Berhasil')
+        postAPI(userData)
+        message.success('Registrasi Berhasil')
         setName('')
         setEmail('')
         setGender('')
