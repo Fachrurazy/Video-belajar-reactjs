@@ -4,6 +4,7 @@ const burger = () => {
     const getUser = JSON.parse(localStorage.getItem('userData'))
     const handleSingout = () => {
         localStorage.removeItem('userData')
+        localStorage.removeItem('token')
         window.location.href = '/login'
     }
     return(
@@ -28,7 +29,7 @@ const burger = () => {
         <div className="absolute lg:right-16 right-5 dropdown dropdown-end">
                     <img src={avatarheader} alt="Avatar-Header-Girl" tabIndex={0} />
                     <ul className="w-40 p-2 rounded dropdown-content menu bg-base-100">
-                        <li><a>Hello | {getUser.fullname}</a></li>
+                        <li><a>Hello | {getUser.name}</a></li>
                         <li><button onClick={handleSingout}><a>Sign Out</a></button></li>
                     </ul>
                 </div>

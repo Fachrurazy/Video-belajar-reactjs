@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import { getUsers } from "../../../services/users.service"
+import userUserStore from "../../Data/Users/UsersStore" 
 import Inputform from "../Elements/Input/Index"
 import Inputpass from "../Elements/Input/Inputpass"
 import Button from "../Elements/Button/Button"
@@ -13,29 +13,30 @@ import { message } from "antd"
 const Formlogin = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [users, setUsers] = useState([]) 
+    const allUsers = userUserStore((state) => state.listusers)
+    const getApi = userUserStore((state) => state.getApiUsers) 
+    // const [users, setUsers] = useState([])
     // const existingUserData = JSON.parse(localStorage.getItem('userData')) 
     
     useEffect(() => {
-        getUsers((data) => {
-            setUsers(data)
-        })
-    }, [])
+        if(allUsers.length === 0) {
+         getApi()
+        }
+     }, [allUsers, getApi])
 
-    const user = users.find((user) => user.email === email && user.password === password)
-
+    const validateUser = allUsers.find((user) => user.email === email && user.password === password)
+    const token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9'
     
     const Handlelogin = (event) => {
     event.preventDefault()
-    if (!user) {
-        // alert('Email dan Password anda tidak sesuai')
+    if (!validateUser) {
         message.error('Email dan Password anda tidak sesuai')
     }
-    else if (user) {
+    else if (validateUser) {
         setEmail('')
         setPassword('')
-        localStorage.setItem('userData', JSON.stringify(user))
-        // alert('Login Berhasil')
+        localStorage.setItem('userData', JSON.stringify(validateUser))
+        localStorage.setItem('token', JSON.stringify(token))
         message.success('Login Berhasil')
         window.location.href = '/beranda'
     }
@@ -56,11 +57,7 @@ const Formlogin = () => {
     // setPassword('')
     // alert('Login Berhasil')
     // window.location.href = '/beranda'
-    // }
-
-    
-
-    
+    // } 
 }
 
     return (
@@ -104,7 +101,6 @@ const Formlogin = () => {
     </Buttongoogle>
     </div>
     </form>
-    {/* <Modalerrorhandler text={errorText} /> */}
         </>
     )
 }
