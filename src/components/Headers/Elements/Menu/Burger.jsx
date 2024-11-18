@@ -7,6 +7,9 @@ const burger = () => {
         localStorage.removeItem('token')
         window.location.href = '/login'
     }
+    const handleAdmin = () => {
+        window.location.href = '/admin'
+    }
     return(
         <>
         <div className="hidden w-full lg:flex lg:items-center lg:w-auto">
@@ -30,6 +33,7 @@ const burger = () => {
                     <img src={avatarheader} alt="Avatar-Header-Girl" tabIndex={0} />
                     <ul className="w-40 p-2 rounded dropdown-content menu bg-base-100">
                         <li><a>Hello | {getUser.name}</a></li>
+                        <li><button onClick={handleAdmin}><a>Admin</a></button></li>
                         <li><button onClick={handleSingout}><a>Sign Out</a></button></li>
                     </ul>
                 </div>
