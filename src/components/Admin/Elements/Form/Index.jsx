@@ -28,9 +28,12 @@ import { Form } from 'antd'
           }
         }, [open, iduser, getListusers.listusers])
     // console.log(datausers)
-
-    
-
+    const handleOk = async () => {
+      getListusers.setApiUsers({ id: iduser, ...datausers })
+    onOk()
+    message.success('Success Edit User')
+  }
+  
     const option = [
         { 
             value: 'laki-laki', 
@@ -42,11 +45,6 @@ import { Form } from 'antd'
         },
     ]
 
-    const handleOk = async () => {
-      getListusers.setApiUsers({ id: iduser, ...datausers })
-    onOk()
-    message.success('Success Edit User')
-  }
      return (
         <Modal 
         title={title} 
